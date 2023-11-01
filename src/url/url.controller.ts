@@ -166,6 +166,12 @@ export class URLController {
     });
     if (!shortenedURL) throw new NotFoundException('Short URL not found');
 
+    // shortenedURL.click_count++;
+    // await shortenedURL.save;
+
+    // Update the click count (issue. This increases the click count by 2)
+    await this.urlService.update({ _id: shortenedURL._id }, { $inc: { click_count: 1 } });
+
     // Perform redirection to the original URL
     res.redirect(302, shortenedURL.original_url); // 302 is the HTTP status code for temporary redirection
   }
