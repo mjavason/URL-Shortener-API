@@ -12,6 +12,7 @@ export const JWT_SECRET = process.env.JWT_SECRET || 'jwt-secret';
 export const SITE_LINK = process.env.SITE_LINK || 'http://localhost:3000';
 export const MAIL_ADDRESS = process.env.MAIL_ADDRESS || 'michaelorji@mail.com';
 export const MAIL_PASSWORD = process.env.MAIL_PASSWORD || 'xxxx';
+export const PORT = process.env.PORT || 3000;
 
 export const MESSAGES = {
   ACCESS_TOKEN_ERROR_RESPONSE: 'Access token is invalid. Please log in again',

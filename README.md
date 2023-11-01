@@ -17,7 +17,6 @@ $ npm install
 Create an `.env` file in the project root directory with the following contents and replace placeholders with your specific configurations:
 
 ```env
-DATABASE_URL=xxxx
 PORT=xxxx
 MONGO_DB_NAME=xxxx
 MONGO_DB_URL=xxxx

@@ -1,9 +1,14 @@
 import { NestFactory } from '@nestjs/core';
-import { ValidationPipe, HttpStatus, BadRequestException } from '@nestjs/common';
+import {
+  ValidationPipe,
+  HttpStatus,
+  BadRequestException,
+} from '@nestjs/common';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationError } from 'class-validator';
 import * as morgan from 'morgan';
+import { PORT } from './constants';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -37,17 +42,16 @@ async function bootstrap() {
   );
 
   const config = new DocumentBuilder()
-  .setTitle('URL Shortener API')
-  .setDescription(
-    'The URL Shortener API simplifies the process of transforming long URLs into concise, shareable links. Users can submit lengthy URLs, and the API generates short, user-friendly links for easy sharing and tracking. Customize your short links, implement expiration, and gain insights into link usage.'
-  )
-  .setVersion('1.0')
-  .build();
-
+    .setTitle('URL Shortener API')
+    .setDescription(
+      'The URL Shortener API simplifies the process of transforming long URLs into concise, shareable links. Users can submit lengthy URLs, and the API generates short, user-friendly links for easy sharing and tracking. Customize your short links, implement expiration, and gain insights into link usage.',
+    )
+    .setVersion('1.0')
+    .build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
 
-  await app.listen(3000);
+  await app.listen(PORT);
 }
 bootstrap();
