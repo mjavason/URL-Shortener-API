@@ -1,9 +1,12 @@
 import { Module } from '@nestjs/common';
-import { UrlService } from './url.service';
-import { UrlController } from './url.controller';
+import { URLService } from './url.service';
+import { URLController } from './url.controller';
+import { MongooseModule } from '@nestjs/mongoose';
+import { URL, URLSchema } from './url.model';
 
 @Module({
-  controllers: [UrlController],
-  providers: [UrlService]
+  imports: [MongooseModule.forFeature([{ name: URL.name, schema: URLSchema }])],
+  controllers: [URLController],
+  providers: [URLService],
 })
 export class UrlModule {}
